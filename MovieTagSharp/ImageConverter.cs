@@ -10,7 +10,7 @@ namespace MovieTagSharp
         {
             string poster = (string)value;
 
-            return MainWindow.baseUrl + "w92" + poster;
+            return MainWindow.BaseUrl + "w92" + poster;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

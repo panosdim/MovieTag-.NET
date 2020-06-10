@@ -12,12 +12,12 @@
     </Window.Resources>
     <StackPanel Orientation="Vertical" Margin="10,10,10,10">
         <StackPanel Orientation="Horizontal">
-            <Button x:Name="openMovie" Content="Open Movie" HorizontalAlignment="Left" VerticalAlignment="Top" Click="openMovie_Click" Margin="0,0,10,0" />
+            <Button x:Name="openMovie" Content="Open Movie" HorizontalAlignment="Left" VerticalAlignment="Top" Click="OpenMovie_Click" Margin="0,0,10,0" />
             <TextBox x:Name="searchName" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Width="507" Height="20" IsEnabled="False" Margin="0,0,10,0" />
-            <Button x:Name="search" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.078,0.917" IsEnabled="False" Margin="0,0,10,0" Click="search_Click" />
-            <Button x:Name="writeTags" Content="Write Tags" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Click="writeTags_Click" />
+            <Button x:Name="search" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.078,0.917" IsEnabled="False" Margin="0,0,10,0" Click="Search_Click" />
+            <Button x:Name="writeTags" Content="Write Tags" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Click="WriteTags_Click" />
         </StackPanel>
-        <ListBox x:Name="searchResults" Height="351" Margin="0,10,0,0" SelectionChanged="searchResults_SelectionChanged">
+        <ListBox x:Name="searchResults" Height="351" Margin="0,10,0,0" SelectionChanged="SearchResults_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

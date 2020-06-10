@@ -21,9 +21,9 @@ namespace MovieTagSharp
     public partial class MainWindow : Window
     {
         private string fileName;
-        private string tmdbKey = System.Configuration.ConfigurationManager.AppSettings["tmdb"];
+        private readonly string tmdbKey = System.Configuration.ConfigurationManager.AppSettings["tmdb"];
         private TMDbClient client;
-        public static string baseUrl { get; set; }
+        public static string BaseUrl { get; set; }
         private string posterSize;
 
         public MainWindow()
@@ -37,7 +37,7 @@ namespace MovieTagSharp
         {
             client = new TMDbClient(tmdbKey);
             await client.GetConfigAsync();
-            baseUrl = client.Config.Images.SecureBaseUrl;
+            BaseUrl = client.Config.Images.SecureBaseUrl;
             List<string> posterSizes = client.Config.Images.PosterSizes;
             posterSize = "w500";
             if (!posterSizes.Contains("w500"))
@@ -46,11 +46,13 @@ namespace MovieTagSharp
             }
         }
 
-        private void openMovie_Click(object sender, RoutedEventArgs e)
+        private void OpenMovie_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Movie files (mkv, mp4, ogv, avi, wmv)|*.mkv; *.mp4; *.ogv; *.avi; *.wmv|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Movie files (mkv, mp4, ogv, avi, wmv)|*.mkv; *.mp4; *.ogv; *.avi; *.wmv|All files (*.*)|*.*",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos)
+            };
             if (openFileDialog.ShowDialog() == true)
             {
                 searchName.IsEnabled = true;
@@ -79,7 +81,7 @@ namespace MovieTagSharp
             lblFileName.Text = fileName;
         }
 
-        private void search_Click(object sender, RoutedEventArgs e)
+        private void Search_Click(object sender, RoutedEventArgs e)
         {
             searchResults.Items.Clear();
             search.IsEnabled = false;
@@ -95,13 +97,13 @@ namespace MovieTagSharp
             lblStatus.Text = "Select a movie from the search results.";
         }
 
-        private void searchResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SearchResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             writeTags.IsEnabled = true;
             lblStatus.Text = "Press write tag button to write the tags to file.";
         }
 
-        private void writeTags_Click(object sender, RoutedEventArgs e)
+        private void WriteTags_Click(object sender, RoutedEventArgs e)
         {
             writeTags.IsEnabled = false;
 
@@ -113,7 +115,7 @@ namespace MovieTagSharp
             // Save poster image
             using (var webClient = new WebClient())
             {
-                byte[] imageBytes = webClient.DownloadData(baseUrl + posterSize + posterPath);
+                byte[] imageBytes = webClient.DownloadData(BaseUrl + posterSize + posterPath);
                 var picture = new Picture(imageBytes);
                 file.Tag.Pictures = new Picture[] { picture };
             }
