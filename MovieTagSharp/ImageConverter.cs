@@ -4,7 +4,7 @@ using System.Windows.Data;
 
 namespace MovieTagSharp
 {
-    class ImageConverter : IValueConverter
+    internal class ImageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
