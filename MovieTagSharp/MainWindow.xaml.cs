@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -24,10 +25,12 @@ namespace MovieTagSharp
         private TMDbClient client;
         public static string baseUrl { get; set; }
         private string posterSize;
+
         public MainWindow()
         {
             InitializeComponent();
             InitializeTmdb();
+            lblStatus.Text = "Please select a movie file to start.";
         }
 
         private async void InitializeTmdb()
@@ -46,7 +49,7 @@ namespace MovieTagSharp
         private void openMovie_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Movie files (mkv, mp4)|*.mkv; *.mp4|All files (*.*)|*.*";
+            openFileDialog.Filter = "Movie files (mkv, mp4, ogv, avi, wmv)|*.mkv; *.mp4; *.ogv; *.avi; *.wmv|All files (*.*)|*.*";
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
             if (openFileDialog.ShowDialog() == true)
             {
@@ -71,6 +74,9 @@ namespace MovieTagSharp
                 searchResults.Items.Clear();
                 writeTags.IsEnabled = false;
             }
+
+            lblStatus.Text = "Check movie title and press search button.";
+            lblFileName.Text = fileName;
         }
 
         private void search_Click(object sender, RoutedEventArgs e)
@@ -86,11 +92,13 @@ namespace MovieTagSharp
 
             search.IsEnabled = true;
             writeTags.IsEnabled = false;
+            lblStatus.Text = "Select a movie from the search results.";
         }
 
         private void searchResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             writeTags.IsEnabled = true;
+            lblStatus.Text = "Press write tag button to write the tags to file.";
         }
 
         private void writeTags_Click(object sender, RoutedEventArgs e)
@@ -101,15 +109,22 @@ namespace MovieTagSharp
             string posterPath = selectedMovie.PosterPath;
 
             var file = File.Create(fileName);
+
+            // Save poster image
             using (var webClient = new WebClient())
             {
                 byte[] imageBytes = webClient.DownloadData(baseUrl + posterSize + posterPath);
                 var picture = new Picture(imageBytes);
                 file.Tag.Pictures = new Picture[] { picture };
-                file.Save();
             }
 
-            writeTags.IsEnabled = true;
+            // Save Metadata
+            file.Tag.Title = selectedMovie.Title;
+            file.Tag.Description = selectedMovie.Overview;
+            file.Tag.Year = (uint)selectedMovie.ReleaseDate.Value.Year;
+            file.Save();
+
+            lblStatus.Text = "Tags written successfully to file.";
         }
     }
 }

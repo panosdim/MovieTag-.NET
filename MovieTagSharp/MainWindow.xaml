@@ -12,24 +12,44 @@
     </Window.Resources>
     <StackPanel Orientation="Vertical" Margin="10,10,10,10">
         <StackPanel Orientation="Horizontal">
-            <Button x:Name="openMovie" Content="Open Movie" HorizontalAlignment="Left" VerticalAlignment="Top" Click="openMovie_Click" Margin="0,0,10,0"/>
-            <TextBox x:Name="searchName" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Width="507" Height="20" IsEnabled="False" Margin="0,0,10,0"/>
-            <Button x:Name="search" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.078,0.917" IsEnabled="False" Margin="0,0,10,0" Click="search_Click"/>
-            <Button x:Name="writeTags" Content="Write Tags" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Click="writeTags_Click"/>
+            <Button x:Name="openMovie" Content="Open Movie" HorizontalAlignment="Left" VerticalAlignment="Top" Click="openMovie_Click" Margin="0,0,10,0" />
+            <TextBox x:Name="searchName" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Width="507" Height="20" IsEnabled="False" Margin="0,0,10,0" />
+            <Button x:Name="search" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.078,0.917" IsEnabled="False" Margin="0,0,10,0" Click="search_Click" />
+            <Button x:Name="writeTags" Content="Write Tags" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Click="writeTags_Click" />
         </StackPanel>
-        <ListBox x:Name="searchResults" Height="384" Margin="0,10,0,0" SelectionChanged="searchResults_SelectionChanged">
+        <ListBox x:Name="searchResults" Height="351" Margin="0,10,0,0" SelectionChanged="searchResults_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Image Margin="3" Source="{Binding PosterPath, Converter={StaticResource ImageConverter}}" />
                         <StackPanel Orientation="Vertical" Margin="3">
-                            <TextBlock Margin="3" Text="{Binding Title}" FontWeight="Bold" FontSize="18"/>
-                            <TextBlock Margin="3" Text="{Binding Overview}" MaxWidth="550" TextWrapping="Wrap"/>
-                            <TextBlock Margin="3" Text="{Binding ReleaseDate, StringFormat='{}{0:yyyy}'}" FontWeight="Bold" FontSize="14"/>
+                            <TextBlock Margin="3" Text="{Binding Title}" FontWeight="Bold" FontSize="18" />
+                            <TextBlock Margin="3" Text="{Binding Overview}" MaxWidth="550" TextWrapping="Wrap" />
+                            <TextBlock Margin="3" Text="{Binding ReleaseDate, StringFormat='{}{0:yyyy}'}" FontWeight="Bold" FontSize="14" />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <StatusBar Margin="0,10,0,0">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem>
+                <TextBlock x:Name="lblStatus" />
+            </StatusBarItem>
+            <Separator Grid.Column="1" />
+            <StatusBarItem Grid.Column="2">
+                <TextBlock x:Name="lblFileName" />
+            </StatusBarItem>
+        </StatusBar>
     </StackPanel>
 </Window>
