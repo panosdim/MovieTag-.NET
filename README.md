@@ -1,4 +1,4 @@
-# Movie Tag Sharp
+# Movie Tag
 A .Net Core WPF application that write tags and cover art images in mp4 and mkv video files.
 It uses the [JSON API](http://api.themoviedb.org/) provided by [TMDb](https://www.themoviedb.org/).
 

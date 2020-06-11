@@ -3,18 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieTagSharp", "MovieTagSharp\MovieTagSharp.csproj", "{C81AD28F-329C-4A0C-AE45-430E3B91FA50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieTag", "MovieTag\MovieTag.csproj", "{C81AD28F-329C-4A0C-AE45-430E3B91FA50}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MovieTagSetup", "MovieTagSetup\MovieTagSetup.vdproj", "{C7E6F3DB-C6D0-40AC-BCEC-4BA7784DEBF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C81AD28F-329C-4A0C-AE45-430E3B91FA50}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{C81AD28F-329C-4A0C-AE45-430E3B91FA50}.All|Any CPU.Build.0 = Release|Any CPU
 		{C81AD28F-329C-4A0C-AE45-430E3B91FA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C81AD28F-329C-4A0C-AE45-430E3B91FA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C81AD28F-329C-4A0C-AE45-430E3B91FA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C81AD28F-329C-4A0C-AE45-430E3B91FA50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7E6F3DB-C6D0-40AC-BCEC-4BA7784DEBF3}.All|Any CPU.ActiveCfg = Release
+		{C7E6F3DB-C6D0-40AC-BCEC-4BA7784DEBF3}.Debug|Any CPU.ActiveCfg = Debug
+		{C7E6F3DB-C6D0-40AC-BCEC-4BA7784DEBF3}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
