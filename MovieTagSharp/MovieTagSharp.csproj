@@ -4,11 +4,11 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>MovieTag.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="TagLibSharp" Version="2.2.0" />
     <PackageReference Include="TMDbLib" Version="1.6.0" />
   </ItemGroup>
-
 </Project>
