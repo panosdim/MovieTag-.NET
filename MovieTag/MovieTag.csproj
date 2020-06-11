@@ -9,6 +9,7 @@
 		<Copyright>Panagiotis Dimopoulos</Copyright>
 		<PackageIcon>MovieTag.png</PackageIcon>
 		<SignAssembly>false</SignAssembly>
+		<Version>1.1.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
