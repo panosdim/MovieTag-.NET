@@ -13,7 +13,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Images\OpenFile.png" />
+	  <None Remove="Images\Save.png" />
+	  <None Remove="Images\Search.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="TagLibSharp" Version="2.2.0" />
 		<PackageReference Include="TMDbLib" Version="1.6.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Images\OpenFile.png" />
+	  <Resource Include="Images\Save.png" />
+	  <Resource Include="Images\Search.png" />
 	</ItemGroup>
 </Project>

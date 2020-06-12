@@ -12,10 +12,25 @@
     </Window.Resources>
     <StackPanel Orientation="Vertical" Margin="5,5,5,5">
         <StackPanel Orientation="Horizontal">
-            <Button x:Name="openMovie" Content="Open Movie" HorizontalAlignment="Left" VerticalAlignment="Top" Click="OpenMovie_Click" Margin="0,0,5,0" />
+            <Button x:Name="openMovie" HorizontalAlignment="Left" VerticalAlignment="Top" Click="OpenMovie_Click" Margin="0,0,5,0">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/OpenFile.png" />
+                    <Label Padding="0">Open Movie</Label>
+                </StackPanel>
+            </Button>
             <TextBox x:Name="searchName" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Width="500" Height="20" IsEnabled="False" Margin="0,0,5,0" />
-            <Button x:Name="search" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Margin="0,0,5,0" Click="Search_Click" />
-            <Button x:Name="writeTags" Content="Write Tags" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Click="WriteTags_Click" />
+            <Button x:Name="search" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Margin="0,0,5,0" Click="Search_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/Search.png" />
+                    <Label Padding="0">Search</Label>
+                </StackPanel>
+            </Button>
+            <Button x:Name="writeTags" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Click="WriteTags_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/Save.png" />
+                    <Label Padding="0">Write Tags</Label>
+                </StackPanel>
+            </Button>
         </StackPanel>
         <ListBox x:Name="searchResults" Height="351" Margin="0,5,0,0" SelectionChanged="SearchResults_SelectionChanged">
             <ListBox.ItemTemplate>
@@ -31,24 +46,24 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StatusBar>
+        <StatusBar Margin="0,5,0,0">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="230" />
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="500" />
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
-            <StatusBarItem>
-                <TextBlock x:Name="lblStatus" />
+            <StatusBarItem Grid.Column="0">
+                <TextBlock x:Name="lblStatus" FontWeight="Bold" />
             </StatusBarItem>
             <Separator Grid.Column="1" />
             <StatusBarItem Grid.Column="2">
-                <TextBlock x:Name="lblFileName" />
+                <TextBlock x:Name="lblFileName" TextTrimming="CharacterEllipsis" />
             </StatusBarItem>
         </StatusBar>
     </StackPanel>

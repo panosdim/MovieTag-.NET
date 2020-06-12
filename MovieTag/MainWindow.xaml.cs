@@ -75,10 +75,10 @@ namespace MovieTagSharp
                 // Clear previous search results
                 searchResults.Items.Clear();
                 writeTags.IsEnabled = false;
-            }
 
-            lblStatus.Text = "Check movie title and press search button.";
-            lblFileName.Text = fileName;
+                lblStatus.Text = "Check movie name and press search.";
+                lblFileName.Text = fileName;
+            }
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
@@ -100,7 +100,7 @@ namespace MovieTagSharp
         private void SearchResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             writeTags.IsEnabled = true;
-            lblStatus.Text = "Press write tag button to write the tags to file.";
+            lblStatus.Text = "Press write tag button to save file.";
         }
 
         private void WriteTags_Click(object sender, RoutedEventArgs e)
