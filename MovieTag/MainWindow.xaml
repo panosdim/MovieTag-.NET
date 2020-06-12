@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieTagSharp"
+        xmlns:controls="clr-namespace:Hillinworks.Wpf.Controls"
         mc:Ignorable="d"
         Title="Movie Tag" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
 
@@ -63,7 +64,9 @@
             </StatusBarItem>
             <Separator Grid.Column="1" />
             <StatusBarItem Grid.Column="2">
-                <TextBlock x:Name="lblFileName" TextTrimming="CharacterEllipsis" />
+                <controls:TextBlockTrimmer EllipsisPosition="Middle">
+                    <TextBlock x:Name="lblFileName" TextTrimming="CharacterEllipsis" />
+                </controls:TextBlockTrimmer>
             </StatusBarItem>
         </StatusBar>
     </StackPanel>
