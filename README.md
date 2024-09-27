@@ -18,5 +18,4 @@ Then in `App.config` file replace the value of `tmdb` key with your TMDb key.
 
 ## Libraries Used
 * [TagLib#](https://github.com/mono/taglib-sharp) used for editing metadata of movie files.
-* [themoviedbapi](https://github.com/holgerbrandl/themoviedbapi) used to access the TMDb API.
 * [TMDbLib](https://github.com/LordMike/TMDbLib) used for interaction with TMDb API.
